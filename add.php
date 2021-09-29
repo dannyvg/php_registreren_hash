@@ -1,6 +1,6 @@
 <?php
 
-include 'authenticate.php';
+session_start();
 // if not logged in
 if (!isset($_SESSION['loggedin'])) {
     header('Location: index.php');
@@ -29,17 +29,19 @@ if (!isset($_SESSION['loggedin'])) {
     <section class="clean-block clean-form h-100">
         <div class="container">
             <div class="block-heading" style="padding-top: 0px;">
-                <h2 class="text-primary" style="margin-top: 100px;">Voeg een Arts toe<br></h2>
-                <p>Voeg hier een arts toe aan het systeem</p>
+                <h2 class="text-primary" style="margin-top: 100px;">Voeg een gebruiker toe<br></h2>
+                <p>Voeg hier een gebruiker toe aan het systeem</p>
             </div>
-            <form action="insert.php" method="post" enctype="multipart/form-data" role="form">
-                <div class="form-group mb-3"><label class="form-label">Naam Arts*</label><input class="form-control" type="text" placeholder="Naam Arts" name="name" required=""></div>
+            <form action="/php/insert.php" method="post" enctype="multipart/form-data" role="form">
+                <div class="form-group mb-3"><label class="form-label">Naam*</label><input class="form-control" type="text" placeholder="Naam" name="name" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Address*</label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Telefoonnummer*</label><input class="form-control" type="text" placeholder="Telefoonnummer" name="tel" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Email*</label><input class="form-control" type="text" placeholder="Email" name="email" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Wachtwoord*</label><input class="form-control" type="password" placeholder="Wachtwoord" name="wachtwoord" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Role*</label><select class="form-select countries order-alpha limit-pop-1000000 presel-MX group-continents group-order-na" id="roles" name="roles" required="">
+                        <option value="1">verzekeraar</option>
                         <option value="2">Arts</option>
+                        <option value="3">Apotheek</option>
                     </select></div>
                 <hr style="margin-top: 30px;margin-bottom: 10px;">
                 <div class="form-group mb-3"><button class="btn btn-primary d-block w-100" type="submit"><i class="fas fa-save"></i>&nbsp;Opslaan</button></div>
